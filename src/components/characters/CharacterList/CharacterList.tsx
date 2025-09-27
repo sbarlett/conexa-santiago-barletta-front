@@ -1,7 +1,7 @@
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import VirtualizedCharacterGrid from "@/components/characters/CharacterList/VirtualizedCharacterGrid";
 import SearchInput from "@/components/ui/SearchInput";
-import { useCharactersInfiniteScroll } from "@/hooks/characters/useCharacters";
+import { useCharactersInfiniteScroll } from "@/hooks/characters/useCharactersInfiniteScroll";
 import { useDebounce } from "@/hooks/useDebounce";
 import { Character } from "@/types/characters";
 
@@ -18,7 +18,7 @@ export default function CharacterList({ title, selectedCharacter, onCharacterSel
 
   const { data, fetchNextPage, hasNextPage, isFetchingNextPage, isLoading } = useCharactersInfiniteScroll(listKey, debouncedSearch);
 
-  const characters = data?.pages.flatMap((page) => page.results) || [];
+  const characters = useMemo(() => data?.pages.flatMap((page) => page.results) || [], [data]);
 
   return (
     <div className="w-full">

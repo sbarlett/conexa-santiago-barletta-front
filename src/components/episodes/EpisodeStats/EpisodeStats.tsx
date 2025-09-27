@@ -11,7 +11,7 @@ export default function EpisodeStats() {
   const totalEpisodes2 = character2Only.length + shared.length;
   const sharedPercentage = character1 && character2 ? Math.round((shared.length / Math.max(totalEpisodes1, totalEpisodes2)) * 100) : 0;
 
-  if (!character1 || !character2) {
+  if (!character1 || !character2 || isLoading) {
     return <EpisodeStatsEmptyState />;
   }
   return (

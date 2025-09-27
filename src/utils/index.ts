@@ -1,3 +1,5 @@
+import { StatusEnum } from "@/types/characters";
+
 type Breakpoint = "mobile" | "tablet" | "desktop";
 
 export const getEstimatedRowHeight = (breakpoint: Breakpoint) => {
@@ -34,4 +36,10 @@ export const getGridColumnsClass = (breakpoint: Breakpoint) => {
     default:
       return "grid-cols-3";
   }
+};
+
+export const statusColorMap: Record<StatusEnum, string> = {
+  [StatusEnum.Alive]: "bg-green-500",
+  [StatusEnum.Dead]: "bg-red-500",
+  [StatusEnum.Unknown]: "bg-gray-500",
 };

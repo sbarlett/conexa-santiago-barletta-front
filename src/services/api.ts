@@ -20,7 +20,7 @@ interface Episode {
   created: string
 }
 
-export const fetchCharacters = async (page = 1, search?: string): Promise<CharacterResponse> => {
+export const getCharacters = async (page = 1, search?: string): Promise<CharacterResponse> => {
   const response = await fetch(`${BASE_URL}/character?page=${page}${search ? `&name=${search}` : ""}`)
   if (!response.ok) {
     throw new Error("Failed to fetch characters")

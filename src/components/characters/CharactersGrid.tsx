@@ -5,7 +5,7 @@ import { CharacterListEnum } from "@/types/characters";
 export default function CharactersGrid() {
   const { character1, character2, selectCharacter1, selectCharacter2 } = useCharacterSelectionContext();
   return (
-    <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
       <CharacterList
         listKey={CharacterListEnum.FIRST}
         title="Selecciona tu primer personaje"
