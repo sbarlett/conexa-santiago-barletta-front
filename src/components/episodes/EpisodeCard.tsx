@@ -1,4 +1,5 @@
-import { Episode } from "@/types/characters";
+import { Episode } from "@/types/episodes";
+
 
 export default function EpisodeCard({ episode }: { episode: Episode }) {
   return (

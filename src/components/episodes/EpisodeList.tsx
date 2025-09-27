@@ -1,6 +1,7 @@
-import type { Episode } from "@/types/characters";
+import Image from "next/image";
 import EpisodeCard from "@/components/episodes/EpisodeCard";
-import { GhostIcon } from "../ui/assets/GhostIcon";
+import { Episode } from "@/types/episodes";
+
 
 interface EpisodeListProps {
   episodes: Episode[];
@@ -20,8 +21,8 @@ export default function EpisodeList({ episodes, title, emptyMessage, isLoading =
           </div>
         ) : episodes.length === 0 ? (
           <div className="flex flex-col justify-center items-center h-full text-gray-400 text-sm space-y-3">
-            <GhostIcon className="w-20 h-20" />
-            <div className="text-center px-4">{emptyMessage || "No se encontraron episodios"}</div>
+            <Image src="/ghost.png" alt="Not Found" width={100} height={64} />
+            <p className="text-center px-4">{emptyMessage}</p>
           </div>
         ) : (
           <div className="p-3 space-y-2">

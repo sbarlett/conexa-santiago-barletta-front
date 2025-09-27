@@ -1,21 +1,21 @@
 "use client";
-
 import { useMemo } from "react";
 import { useQueries } from "@tanstack/react-query";
-import type { Character } from "@/types/characters";
-import { fetchMultipleEpisodes, extractEpisodeId } from "@/services/api";
+import { CharacterType } from "@/types/characters";
+import { getEpisodes } from "@/services/api";
+import { extractEpisodeId } from "@/utils";
 
-export const useEpisodeComparison = (character1: Character | null, character2: Character | null) => {
+export const useEpisodeComparison = (character1: CharacterType | null, character2: CharacterType | null) => {
   const episodeQueries = useQueries({
     queries: [
       {
         queryKey: ["episodes", "character1", character1?.id],
-        queryFn: () => fetchMultipleEpisodes(character1?.episode.map(extractEpisodeId) || []),
+        queryFn: () => getEpisodes(character1?.episode.map(extractEpisodeId) || []),
         enabled: !!character1?.episode.length,
       },
       {
         queryKey: ["episodes", "character2", character2?.id],
-        queryFn: () => fetchMultipleEpisodes(character2?.episode.map(extractEpisodeId) || []),
+        queryFn: () => getEpisodes(character2?.episode.map(extractEpisodeId) || []),
         enabled: !!character2?.episode.length,
       },
     ],

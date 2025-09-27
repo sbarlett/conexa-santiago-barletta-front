@@ -1,9 +1,9 @@
 import Image from "next/image";
 import StatusDot from "@/components/ui/StatusDot";
-import { Character } from "@/types/characters";
+import { CharacterType } from "@/types/characters";
 
 interface Props {
-  character: Character;
+  character: CharacterType;
   selected?: boolean;
   onSelect: () => void;
 }

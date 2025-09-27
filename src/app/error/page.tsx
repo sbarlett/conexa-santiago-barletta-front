@@ -1,0 +1,29 @@
+"use client";
+import Image from "next/image";
+import { useRouter } from "next/navigation";
+
+export default function ErrorPage() {
+  const router = useRouter();
+  const handleGoHome = () => {
+    router.push("/");
+  };
+  return (
+    <div className="flex items-center justify-center bg-background p-8">
+      <div className="max-w-md w-full text-center">
+        <div className="flex justify-center text-8xl mb-8">
+          <Image src="/error.png" alt="Error image" width={140} height={64} />
+        </div>
+        <h1 className="text-3xl font-bold text-foreground mb-4">Algo salio mal</h1>
+        <p className="text-muted-foreground mb-8 text-lg">Intente nuevamente más tarde.</p>
+        <div className="space-y-4">
+          <button
+            onClick={handleGoHome}
+            className="w-full px-6 py-3 bg-transparent text-primary rounded-md hover:bg-primary/90 transition-colors font-medium border border-primary "
+          >
+            Ir al inicio
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+}
