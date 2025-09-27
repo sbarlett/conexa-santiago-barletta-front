@@ -1,7 +1,7 @@
 "use client"
 
 import type { Character } from "@/types/characters"
-import { useEpisodeComparison } from "@/hooks/useEpisodeComparison"
+import { useEpisodeComparison } from "@/hooks/episodes/useEpisodeComparison"
 
 interface EpisodeStatsProps {
   character1: Character | null

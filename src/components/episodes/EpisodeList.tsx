@@ -1,6 +1,6 @@
 import type { Episode } from "@/types/characters";
-import { GhostIcon } from "@/components/atoms/EmptyStateIcons";
-import EpisodeCard from "@/components/molecules/EpisodeCard";
+import EpisodeCard from "@/components/episodes/EpisodeCard";
+import { GhostIcon } from "../ui/assets/GhostIcon";
 
 interface EpisodeListProps {
   episodes: Episode[];

@@ -4,7 +4,6 @@ import { fetchMultipleEpisodes, extractEpisodeId } from "@/lib/api"
 
 export const useCharacterEpisodes = (character: Character | null) => {
   const episodeIds = character?.episode.map(extractEpisodeId) || []
-
   return useQuery({
     queryKey: ["character-episodes", character?.id],
     queryFn: () => fetchMultipleEpisodes(episodeIds),

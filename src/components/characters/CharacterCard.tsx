@@ -1,7 +1,7 @@
 "use client";
 import Image from "next/image";
-import StatusDot from "@/components/atoms/StatusDot";
-import type { Character } from "@/types/characters";
+import StatusDot from "@/components/ui/StatusDot";
+import { Character } from "@/types/characters";
 
 interface Props {
   character: Character;

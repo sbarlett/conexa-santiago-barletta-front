@@ -2,13 +2,12 @@
 
 import { useCharacterSelection } from "@/hooks/useCharacterSelection";
 
-import EpisodeStats from "@/components/organisms/EpisodeStats/EpisodeStats";
-import Logo from "@/components/ui/Logo";
-import SelectionIndicator from "@/components/molecules/SelectionIndicator";
-import CharacterList from "@/components/organisms/CharacterList";
-import EpisodeComparison from "@/components/organisms/EpisodeComparison";
+import SelectionIndicator from "@/components/characters/SelectionIndicator";
+import CharacterList from "@/components/characters/CharacterList";
+import EpisodeComparison from "@/components/episodes/EpisodeComparison";
+import EpisodeStats from "@/components/episodes/EpisodeStats/EpisodeStats";
 
-export default function HomePage() {
+export default function Page() {
   const { character1, character2, selectCharacter1, selectCharacter2, clearCharacter1, clearCharacter2, clearAll } = useCharacterSelection();
   return (
     <div className="container mx-auto px-4 max-w-7xl">

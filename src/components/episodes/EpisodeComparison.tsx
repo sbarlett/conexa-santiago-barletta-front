@@ -1,6 +1,6 @@
 "use client";
-import EpisodeList from "@/components/organisms/EpisodeList";
-import { useEpisodeComparison } from "@/hooks/useEpisodeComparison";
+import EpisodeList from "@/components/episodes/EpisodeList";
+import { useEpisodeComparison } from "@/hooks/episodes/useEpisodeComparison";
 import type { Character } from "@/types/characters";
 import EpisodeStatsEmptyState from "./EpisodeStats/EpisodeStatsEmptyState";
 

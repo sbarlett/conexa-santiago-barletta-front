@@ -2,11 +2,11 @@
 
 import { useVirtualizer } from "@tanstack/react-virtual";
 import { useRef, useEffect, useCallback } from "react";
-import CharacterCard from "@/components/molecules/CharacterCard";
+import CharacterCard from "@/components/characters/CharacterCard";
 import type { Character } from "@/types/characters";
 import { getEstimatedRowHeight, getItemsPerRow } from "@/utils";
 import { useBreakpoint } from "@/hooks/useBreakpoint";
-import SearchInput from "../molecules/SearchInput";
+import SearchInput from "../ui/SearchInput";
 
 interface VirtualizedCharacterGridProps {
   characters: Character[];
@@ -36,7 +36,7 @@ export default function VirtualizedCharacterGrid({
   isSearching,
 }: VirtualizedCharacterGridProps) {
   const parentRef = useRef<HTMLDivElement>(null);
-
+  
   const breakpoint = useBreakpoint();
   const itemsPerRow = getItemsPerRow(breakpoint);
 
@@ -62,7 +62,6 @@ export default function VirtualizedCharacterGrid({
   return (
     <div className="w-full">
       <h2 className="text-xl font-bold mb-4 text-center">{title}</h2>
-
       <div className="mb-4">
         <SearchInput placeholder="Buscar personajes..." onSearch={onSearch} value={searchQuery} />
       </div>
@@ -91,7 +90,7 @@ export default function VirtualizedCharacterGrid({
                   className="absolute left-0 w-full"
                   style={{ transform: `translateY(${virtualRow.start}px)` }}
                 >
-                  <div className={`grid grid-cols-${itemsPerRow} gap-4 py-4`}>
+                  <div className={`grid grid-cols-3 gap-4 py-4`}>
                     {rowCharacters.map((character) => (
                       <CharacterCard
                         key={`${selectorId}-char-${character.id}`}

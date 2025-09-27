@@ -1,4 +1,5 @@
-import { GhostIcon } from "@/components/atoms/EmptyStateIcons";
+import { GhostIcon } from "@/components/ui/assets/GhostIcon";
+
 
 export default function EpisodeStatsEmptyState() {
   return (
