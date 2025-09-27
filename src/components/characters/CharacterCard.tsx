@@ -1,4 +1,3 @@
-"use client";
 import Image from "next/image";
 import StatusDot from "@/components/ui/StatusDot";
 import { Character } from "@/types/characters";

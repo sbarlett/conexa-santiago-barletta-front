@@ -3,13 +3,11 @@ import EpisodeList from "@/components/episodes/EpisodeList";
 import { useEpisodeComparison } from "@/hooks/episodes/useEpisodeComparison";
 import type { Character } from "@/types/characters";
 import EpisodeStatsEmptyState from "./EpisodeStats/EpisodeStatsEmptyState";
+import { useCharacterSelectionContext } from "@/hooks/characters/useCharacterSelectionContext";
 
-interface EpisodeComparisonProps {
-  character1: Character | null;
-  character2: Character | null;
-}
+export default function EpisodeComparison() {
+  const { character1, character2 } = useCharacterSelectionContext();
 
-export default function EpisodeComparison({ character1, character2 }: EpisodeComparisonProps) {
   const { character1Only, character2Only, shared, isLoading } = useEpisodeComparison(character1, character2);
 
   if (!character1 || !character2) {

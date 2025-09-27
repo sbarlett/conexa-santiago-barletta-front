@@ -1,24 +1,20 @@
 "use client";
 
-import { useVirtualizer } from "@tanstack/react-virtual";
-import { useRef, useEffect, useCallback } from "react";
 import CharacterCard from "@/components/characters/CharacterCard";
+import { useBreakpoint } from "@/hooks/useBreakpoint";
 import type { Character } from "@/types/characters";
 import { getEstimatedRowHeight, getItemsPerRow } from "@/utils";
-import { useBreakpoint } from "@/hooks/useBreakpoint";
-import SearchInput from "../ui/SearchInput";
+import { useVirtualizer } from "@tanstack/react-virtual";
+import { useCallback, useEffect, useRef } from "react";
 
 interface VirtualizedCharacterGridProps {
   characters: Character[];
-  selectedCharacter?: Character;
+  selectedCharacter: Character | null;
   onCharacterSelect: (character: Character) => void;
-  title: string;
   hasNextPage?: boolean;
   fetchNextPage?: () => void;
   isFetchingNextPage?: boolean;
   selectorId?: string;
-  onSearch: (query: string) => void;
-  searchQuery: string;
   isSearching?: boolean;
 }
 
@@ -26,17 +22,15 @@ export default function VirtualizedCharacterGrid({
   characters,
   selectedCharacter,
   onCharacterSelect,
-  title,
   hasNextPage,
   fetchNextPage,
   isFetchingNextPage,
   selectorId = "grid",
-  onSearch,
-  searchQuery,
   isSearching,
 }: VirtualizedCharacterGridProps) {
+
   const parentRef = useRef<HTMLDivElement>(null);
-  
+
   const breakpoint = useBreakpoint();
   const itemsPerRow = getItemsPerRow(breakpoint);
 
@@ -60,11 +54,7 @@ export default function VirtualizedCharacterGrid({
   }, [rowVirtualizer.getVirtualItems(), totalRows, hasNextPage, isFetchingNextPage, fetchNextPage]);
 
   return (
-    <div className="w-full">
-      <h2 className="text-xl font-bold mb-4 text-center">{title}</h2>
-      <div className="mb-4">
-        <SearchInput placeholder="Buscar personajes..." onSearch={onSearch} value={searchQuery} />
-      </div>
+    <div className="mt-4">
       {isSearching ? (
         <div className="w-full">
           <div className="flex justify-center items-center h-96 border border-gray-700 bg-gray-900 rounded-lg">

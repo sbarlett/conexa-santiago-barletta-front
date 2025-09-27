@@ -1,13 +1,13 @@
-"use client";
 import Image from "next/image";
-import type { Character } from "@/types/characters";
+import { Character } from "@/types/characters";
+
 interface SelectionIndicatorProps {
   character: Character | null;
   label: string;
   onClear?: () => void;
 }
 
-export default function SelectionIndicator({ character, label, onClear }: SelectionIndicatorProps) {
+export default function CharacterSelector({ character, label, onClear }: SelectionIndicatorProps) {
   if (!character) {
     return (
       <div className="flex flex-col items-center p-4 border-2 border-dashed border-gray-600 rounded-lg">

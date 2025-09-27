@@ -1,24 +1,18 @@
-"use client"
+"use client";
+import { useCharacterSelectionContext } from "@/hooks/characters/useCharacterSelectionContext";
+import { useEpisodeComparison } from "@/hooks/episodes/useEpisodeComparison";
 
-import type { Character } from "@/types/characters"
-import { useEpisodeComparison } from "@/hooks/episodes/useEpisodeComparison"
-
-interface EpisodeStatsProps {
-  character1: Character | null
-  character2: Character | null
-}
-
-export default function EpisodeStats({ character1, character2 }: EpisodeStatsProps) {
-  const { character1Only, character2Only, shared, isLoading } = useEpisodeComparison(character1, character2)
+export default function EpisodeStats() {
+  const { character1, character2 } = useCharacterSelectionContext();
+  const { character1Only, character2Only, shared, isLoading } = useEpisodeComparison(character1, character2);
 
   if (isLoading || !character1 || !character2) {
-    return null
+    return null;
   }
 
-  const totalEpisodes1 = character1Only.length + shared.length
-  const totalEpisodes2 = character2Only.length + shared.length
-  const sharedPercentage =
-    character1 && character2 ? Math.round((shared.length / Math.max(totalEpisodes1, totalEpisodes2)) * 100) : 0
+  const totalEpisodes1 = character1Only.length + shared.length;
+  const totalEpisodes2 = character2Only.length + shared.length;
+  const sharedPercentage = character1 && character2 ? Math.round((shared.length / Math.max(totalEpisodes1, totalEpisodes2)) * 100) : 0;
 
   return (
     <div className="mt-4 p-4 bg-gray-800 rounded-lg border border-gray-700">
@@ -50,5 +44,5 @@ export default function EpisodeStats({ character1, character2 }: EpisodeStatsPro
         )}
       </div>
     </div>
-  )
+  );
 }
