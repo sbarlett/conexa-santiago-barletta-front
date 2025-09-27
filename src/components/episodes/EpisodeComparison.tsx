@@ -1,17 +1,13 @@
-"use client";
 import EpisodeList from "@/components/episodes/EpisodeList";
-import { useEpisodeComparison } from "@/hooks/episodes/useEpisodeComparison";
-import type { Character } from "@/types/characters";
-import EpisodeStatsEmptyState from "./EpisodeStats/EpisodeStatsEmptyState";
 import { useCharacterSelectionContext } from "@/hooks/characters/useCharacterSelectionContext";
+import { useEpisodeComparison } from "@/hooks/episodes/useEpisodeComparison";
 
 export default function EpisodeComparison() {
   const { character1, character2 } = useCharacterSelectionContext();
-
   const { character1Only, character2Only, shared, isLoading } = useEpisodeComparison(character1, character2);
 
   if (!character1 || !character2) {
-    return <EpisodeStatsEmptyState />;
+    return null;
   }
   return (
     <div className="mt-8">
@@ -19,19 +15,19 @@ export default function EpisodeComparison() {
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         <EpisodeList
           episodes={character1Only}
-          title={`Episodios de ${character1?.name || "Personaje #1"}`}
+          title={`Aparece solo ${character1?.name}`}
           emptyMessage="Este personaje no tiene episodios solo"
           isLoading={isLoading && !!character1}
         />
         <EpisodeList
           episodes={shared}
-          title="Episodios Compartidos"
+          title="Aparecen ambos personajes"
           emptyMessage="Estos personajes nunca se encontraron"
           isLoading={isLoading && !!character1 && !!character2}
         />
         <EpisodeList
           episodes={character2Only}
-          title={`Episodios de ${character2?.name || "Personaje #2"}`}
+          title={`Aparece solo ${character2?.name}`}
           emptyMessage="Este personaje no tiene episodios solo"
           isLoading={isLoading && !!character2}
         />

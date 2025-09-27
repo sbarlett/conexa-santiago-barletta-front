@@ -1,7 +1,5 @@
 "use client";
-
-import type React from "react";
-
+import { Search, X } from "lucide-react";
 import { useState } from "react";
 
 interface SearchInputProps {
@@ -33,7 +31,7 @@ export default function SearchInput({ placeholder = "Buscar...", onSearch, class
   return (
     <div className={`relative ${className}`}>
       <div className="relative">
-        {/* <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-sage-400 dark:text-sage-500 w-4 h-4" /> */}
+        <Search className="absolute left-3 top-1/2 transform -translate-y-1/2  w-4 h-4" />
         <input
           type="text"
           placeholder={placeholder}
@@ -55,14 +53,10 @@ export default function SearchInput({ placeholder = "Buscar...", onSearch, class
         {value && (
           <button
             onClick={handleClear}
-            className="absolute right-2 top-1/2 transform -translate-y-1/2 
-                       h-7 w-7 rounded-full flex items-center justify-center
-                       text-sage-400 dark:text-sage-500 
-                       hover:text-sage-600 dark:hover:text-sage-300 
-                       hover:bg-sage-100/50 dark:hover:bg-sage-800/50
-                       transition-all duration-200 ease-in-out"
+            className="absolute right-3 top-1/2 transform -translate-y-1/2 
+                       h-5 w-5 transition-all duration-200 ease-in-out"
           >
-            X
+            <X />
           </button>
         )}
       </div>

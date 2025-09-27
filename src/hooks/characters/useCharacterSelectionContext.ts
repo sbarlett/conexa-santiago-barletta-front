@@ -14,8 +14,8 @@ interface CharacterSelectionContextType {
 const initialValues = {
   character1: null,
   character2: null,
-  selectCharacter1: (character: Character) => {},
-  selectCharacter2: (character: Character) => {},
+  selectCharacter1: (_: Character) => {},
+  selectCharacter2: (_: Character) => {},
   clearCharacter1: () => {},
   clearCharacter2: () => {},
   clearAll: () => {},

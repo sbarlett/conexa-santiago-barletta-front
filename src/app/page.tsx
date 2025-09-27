@@ -8,12 +8,15 @@ import { CharacterSelectionProvider } from "@/providers/CharacterSelectionProvid
 export default function Page() {
   return (
     <CharacterSelectionProvider>
-      <div className="container mx-auto px-4 max-w-7xl">
+      <section className="container mx-auto px-4 max-w-7xl">
+        <h1 className="text-lg max-w-2xl mx-auto text-center mb-8 text-gray-300">
+          Selecciona dos personajes para descubrir en qué episodios aparecen juntos y ver estadísticas detalladas de sus aventuras.
+        </h1>
         <CharacterPreview />
         <CharactersGrid />
         <EpisodeStats />
         <EpisodeComparison />
-      </div>
+      </section>
     </CharacterSelectionProvider>
   );
 }

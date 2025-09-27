@@ -4,7 +4,7 @@ import CharacterSelector from "@/components/characters/CharacterPreview/Characte
 export default function CharacterPreview() {
   const { character1, character2, clearCharacter1, clearCharacter2, clearAll } = useCharacterSelectionContext();
   return (
-    <div className="flex justify-center gap-4 mb-8">
+    <div className="flex flex-wrap  justify-center gap-4 mb-8">
       <CharacterSelector character={character1} label="Personaje #1" onClear={clearCharacter1} />
       <CharacterSelector character={character2} label="Personaje #2" onClear={clearCharacter2} />
       {(character1 || character2) && (

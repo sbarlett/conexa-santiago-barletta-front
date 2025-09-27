@@ -1,24 +1,18 @@
+export enum CharacterListEnum {
+  FIRST = "character1",
+  SECOND = "character2",
+}
+
 export enum StatusEnum {
   Alive = "Alive",
   Dead = "Dead",
   Unknown = "unknown",
 }
-
-export enum SpeciesEnum {
-  Human = "Human",
-  Alien = "Alien",
-  Robot = "Robot",
-  MythologicalCreature = "Mythological Creature",
-  Animal = "Animal",
-  Disease = "Disease",
-  Unknown = "unknown",
-}
-
 export interface Character {
   id: number;
   name: string;
   status: StatusEnum;
-  species: SpeciesEnum;
+  species: string;
   type: string;
   gender: string;
   origin: {

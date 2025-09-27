@@ -5,13 +5,12 @@ import { useEffect, useState } from "react";
 const BREAKPOINTS = {
   mobile: 640,
   tablet: 1024,
-} as const;
+};
 
 type Breakpoint = "mobile" | "tablet" | "desktop";
 
 export function useBreakpoint(): Breakpoint {
   const [breakpoint, setBreakpoint] = useState<Breakpoint>("desktop");
-
   useEffect(() => {
     const updateBreakpoint = () => {
       const width = window.innerWidth;
