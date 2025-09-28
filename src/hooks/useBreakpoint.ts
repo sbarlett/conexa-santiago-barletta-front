@@ -1,10 +1,4 @@
-"use client";
 import { useEffect, useState } from "react";
-
-const BREAKPOINTS = {
-  mobile: 640,
-  tablet: 1024,
-};
 
 export enum Breakpoint {
   Mobile = "mobile",
@@ -12,19 +6,14 @@ export enum Breakpoint {
   Desktop = "desktop",
 }
 
-export function useBreakpoint(): Breakpoint {
-  const [breakpoint, setBreakpoint] = useState<Breakpoint>(Breakpoint.Desktop);
+const getBreakpoint = (width: number) => (width < 640 ? Breakpoint.Mobile : width < 1024 ? Breakpoint.Tablet : Breakpoint.Desktop);
+
+export function useBreakpoint() {
+  const [breakpoint, setBreakpoint] = useState(Breakpoint.Desktop);
+
   useEffect(() => {
-    const updateBreakpoint = () => {
-      const width = window.innerWidth;
-      if (width < BREAKPOINTS.mobile) {
-        setBreakpoint(Breakpoint.Mobile);
-      } else if (width < BREAKPOINTS.tablet) {
-        setBreakpoint(Breakpoint.Tablet);
-      } else {
-        setBreakpoint(Breakpoint.Desktop);
-      }
-    };
+    const updateBreakpoint = () => setBreakpoint(getBreakpoint(window.innerWidth));
+
     updateBreakpoint();
     window.addEventListener("resize", updateBreakpoint);
     return () => window.removeEventListener("resize", updateBreakpoint);

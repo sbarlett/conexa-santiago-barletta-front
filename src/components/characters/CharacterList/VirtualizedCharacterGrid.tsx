@@ -4,12 +4,12 @@ import CharacterCard from "@/components/characters/CharacterCard";
 import EmptyCard from "@/components/ui/EmptyCard";
 import { useBreakpoint } from "@/hooks/useBreakpoint";
 import { getEstimatedRowHeight, getGridColumnsClass, getItemsPerRow } from "@/utils";
-import { Character } from "@/types/characters";
+import { CharacterType } from "@/types/characters";
 
 interface VirtualizedCharacterGridProps {
-  characters: Character[];
-  selectedCharacter: Character | null;
-  onCharacterSelect: (character: Character) => void;
+  characters: CharacterType[];
+  selectedCharacter: CharacterType | null;
+  onCharacterSelect: (character: CharacterType) => void;
   hasNextPage?: boolean;
   fetchNextPage?: () => void;
   isFetchingNextPage?: boolean;

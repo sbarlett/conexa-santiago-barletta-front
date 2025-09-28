@@ -43,7 +43,5 @@ export const statusColorMap: Record<StatusEnum, string> = {
   [StatusEnum.Unknown]: "bg-gray-500",
 };
 
-export const extractEpisodeId = (url: string): number => {
-  const parts = url.split("/");
-  return Number.parseInt(parts[parts.length - 1]);
-};
+
+export const extractEpisodeId = (url: string) => +url.split("/").pop()!;
