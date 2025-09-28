@@ -6,8 +6,8 @@
 - **Tailwind CSS** - Para el diseño
 - **Jest + Testing Library** - Testing unitario
 - **Axios** - Para manejar las peticiones HTTP
-- **React Query** - Para el manejo de la informacion, estados y paginacion infinita
-- **React Virtual** - Virtualización para mejorar el performance
+- **React Query** - Para el manejo de data, estados y paginacion infinita
+- **React Virtual** - Para mejorar el performance
 
 ## 🚀 Instalación y Uso
 
@@ -26,22 +26,3 @@ yarn install
 ```bash
 yarn dev
 ```
-
-## 📱 Funcionalidades
-
-### 1. Búsqueda de Personajes
-- Búsqueda de personajes
-- Lista virtualizada para mejor performance
-- Paginación infinita
-
-### 2. Análisis y Comparación de Episodios
-- **Episodios exclusivos** de cada personaje
-- **Episodios compartidos** entre ambos
-- **Porcentaje de coincidencia**
-- **Estadísticas detalladas**
-
-## 🌐 API Utilizada
-
-[Rick and Morty API](https://rickandmortyapi.com/)
-- Endpoint de personajes
-- Endpoint de episodios
