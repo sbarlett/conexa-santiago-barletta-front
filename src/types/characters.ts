@@ -11,7 +11,7 @@ export enum StatusEnum {
 export interface CharacterType {
   id: number;
   name: string;
-  status: StatusEnum;
+  status: string;
   species: string;
   type: string;
   gender: string;
