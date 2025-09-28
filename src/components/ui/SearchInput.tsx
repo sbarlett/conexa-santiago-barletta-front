@@ -3,63 +3,42 @@ import { Search, X } from "lucide-react";
 import { useState } from "react";
 
 interface SearchInputProps {
-  placeholder?: string;
+  value: string;
   onSearch: (query: string) => void;
-  className?: string;
-  value?: string;
+  placeholder?: string;
 }
 
-export default function SearchInput({ placeholder = "Buscar...", onSearch, className = "", value: controlledValue }: SearchInputProps) {
-  const [internalValue, setInternalValue] = useState<string>("");
-  const value = controlledValue !== undefined ? controlledValue : internalValue;
+export default function SearchInput({ placeholder = "Buscar personajes...", onSearch, value }: SearchInputProps) {
+  const [internalValue, setInternalValue] = useState("");
+  const isControlled = value !== undefined;
+  const inputValue = isControlled ? value : internalValue;
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const newValue = e.target.value;
-    if (controlledValue === undefined) {
-      setInternalValue(newValue);
-    }
+    if (!isControlled) setInternalValue(newValue);
     onSearch(newValue);
   };
 
   const handleClear = () => {
-    if (controlledValue === undefined) {
-      setInternalValue("");
-    }
+    if (!isControlled) setInternalValue("");
     onSearch("");
   };
 
   return (
-    <div className={`relative ${className}`}>
-      <div className="relative">
-        <Search className="absolute left-3 top-1/2 transform -translate-y-1/2  w-4 h-4" />
-        <input
-          type="text"
-          placeholder={placeholder}
-          value={value}
-          onChange={handleChange}
-          className="w-full pl-10 pr-10 py-2.5 
-             bg-transparent dark:bg-transparent
-             border border-sage-200/50 dark:border-sage-700/50 
-             rounded-xl 
-             text-neutral-800 dark:text-neutral-200 
-             placeholder-sage-400 dark:placeholder-sage-500
-             focus:outline-none focus:ring-2 focus:ring-sage-300/50 dark:focus:ring-sage-600/50 
-             focus:border-sage-300 dark:focus:border-sage-600
-             transition-all duration-200 ease-in-out
-             hover:bg-transparent dark:hover:bg-transparent 
-             hover:border-sage-300/70 dark:hover:border-sage-600/70"
-        />
-
-        {value && (
-          <button
-            onClick={handleClear}
-            className="absolute right-3 top-1/2 transform -translate-y-1/2 
-                       h-5 w-5 transition-all duration-200 ease-in-out"
-          >
-            <X />
-          </button>
-        )}
-      </div>
+    <div className="relative">
+      <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
+      <input
+        type="text"
+        placeholder={placeholder}
+        value={inputValue}
+        onChange={handleChange}
+        className="w-full pl-10 pr-10 py-2.5 bg-background border border-border rounded-xl text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring focus:border-ring transition-colors hover:border-ring/60"
+      />
+      {inputValue && (
+        <button onClick={handleClear} className="absolute right-3 top-1/2 -translate-y-1/2 p-1 rounded hover:bg-accent transition-colors">
+          <X className="w-4 h-4" />
+        </button>
+      )}
     </div>
   );
 }

@@ -1,14 +1,14 @@
 import Image from "next/image";
-import { Character } from "@/types/characters";
+import { CharacterType } from "@/types/characters";
 import { X } from "lucide-react";
 
-interface SelectionIndicatorProps {
-  character: Character | null;
+interface CharacterSelectorProps {
+  character: CharacterType | null;
   label: string;
   onClear?: () => void;
 }
 
-export default function CharacterSelector({ character, label, onClear }: SelectionIndicatorProps) {
+export default function CharacterSelector({ character, label, onClear }: CharacterSelectorProps) {
   if (!character) {
     return (
       <div className="flex flex-col items-center p-3 border-2 border-dashed border-gray-600 rounded-lg">

@@ -1,6 +1,5 @@
 import { EpisodeType } from "@/types/episodes";
 
-
 export default function EpisodeCard({ episode }: { episode: EpisodeType }) {
   return (
     <div className="p-3 border border-border bg-card rounded-lg hover:bg-accent transition-colors">

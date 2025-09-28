@@ -2,13 +2,13 @@ import Image from "next/image";
 import StatusDot from "@/components/ui/StatusDot";
 import { CharacterType } from "@/types/characters";
 
-interface Props {
+interface CharacterCardProps {
   character: CharacterType;
   selected?: boolean;
   onSelect: () => void;
 }
 
-export default function CharacterCard({ character, selected, onSelect }: Props) {
+export default function CharacterCard({ character, selected, onSelect }: CharacterCardProps) {
   return (
     <button
       onClick={onSelect}

@@ -11,16 +11,12 @@ interface CharacterSelectionContextType {
   clearAll: () => void;
 }
 
-const initialValues = {
-  character1: null,
-  character2: null,
-  selectCharacter1: (_: CharacterType) => {},
-  selectCharacter2: (_: CharacterType) => {},
-  clearCharacter1: () => {},
-  clearCharacter2: () => {},
-  clearAll: () => {},
+export const CharacterSelectionContext = createContext<CharacterSelectionContextType | undefined>(undefined);
+
+export const useCharacterSelectionContext = () => {
+  const context = useContext(CharacterSelectionContext);
+  if (context === undefined) {
+    throw new Error('useCharacterSelectionContext must be used within a CharacterSelectionProvider');
+  }
+  return context;
 };
-
-export const CharacterSelectionContext = createContext<CharacterSelectionContextType>(initialValues);
-
-export const useCharacterSelectionContext = () => useContext(CharacterSelectionContext);
