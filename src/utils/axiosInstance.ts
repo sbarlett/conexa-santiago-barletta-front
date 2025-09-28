@@ -10,7 +10,7 @@ const axiosInstance: AxiosInstance = axios.create({
   },
 });
 
-export const isErrorNotFound = (error: AxiosError) => {
+export const isNotFoundError = (error: AxiosError) => {
   return axios.isAxiosError(error) && error.response?.status === 404;
 };
 

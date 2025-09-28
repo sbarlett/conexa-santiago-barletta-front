@@ -1,7 +1,7 @@
 import { AxiosError } from "axios";
 import { useInfiniteQuery } from "@tanstack/react-query";
 import { getCharacters } from "@/services/api";
-import { isErrorNotFound } from "@/utils/axiosInstance";
+import { isNotFoundError } from "@/utils/axiosInstance";
 import { CharactersResponse } from "@/types/characters";
 
 const DEFAULT_RESPONSE: CharactersResponse = {
@@ -16,10 +16,10 @@ export const useCharactersInfiniteScroll = (queryKey: string, search: string) =>
       try {
         return await getCharacters(pageParam as number, search);
       } catch (err: AxiosError | any) {
-        return isErrorNotFound(err) ? DEFAULT_RESPONSE : Promise.reject(err);
+        return isNotFoundError(err) ? DEFAULT_RESPONSE : Promise.reject(err);
       }
     },
-    retry: (failureCount, err: AxiosError) => (isErrorNotFound(err) ? false : failureCount < 1),
+    retry: (failureCount, err: AxiosError) => (isNotFoundError(err) ? false : failureCount < 1),
     getNextPageParam: (lastPage) => {
       const nextUrl = lastPage?.info?.next;
       return nextUrl ? Number.parseInt(new URL(nextUrl).searchParams.get("page") || "1") : undefined;
