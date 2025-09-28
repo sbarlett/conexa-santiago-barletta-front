@@ -11,14 +11,14 @@ interface CharacterSelectorProps {
 export default function CharacterSelector({ character, label, onClear }: CharacterSelectorProps) {
   if (!character) {
     return (
-      <div className="flex flex-col items-center p-3 border-2 border-dashed border-gray-600 rounded-lg">
+      <div className="flex flex-col items-center p-3 border-2 border-dashed border-gray-600 rounded-lg w-full sm:w-auto">
         <p className="text-gray-400 text-sm">{label}</p>
         <p className="text-xs text-gray-500 mt-1">Seleccionar personaje</p>
       </div>
     );
   }
   return (
-    <div className="flex flex-col items-center justify-center p-3 border-2 border-blue-400 rounded-lg bg-gray-800">
+    <div className="flex flex-col items-center justify-center p-3 border-2 border-blue-400 rounded-lg bg-gray-800 w-full sm:w-auto">
       <div className="flex items-center gap-3">
         <Image src={character.image} alt={character.name} width={35} height={35} className="rounded-full object-cover" />
         <div className="text-left">
