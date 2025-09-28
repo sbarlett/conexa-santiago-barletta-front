@@ -9,7 +9,7 @@ export default function CharacterPreview() {
       <CharacterSelector character={character1} label="Personaje #1" onClear={clearCharacter1} />
       <CharacterSelector character={character2} label="Personaje #2" onClear={clearCharacter2} />
       {hasCharacters && (
-      <button
+        <button
           onClick={clearAll}
           className="px-4 py-2 text-sm text-destructive hover:text-destructive/80 border border-destructive/30 rounded-lg hover:bg-destructive/10 transition-colors sm:self-stretch w-full sm:w-auto"
         >
