@@ -1,4 +1,3 @@
-"use client";
 import { useMemo } from "react";
 import { useQueries } from "@tanstack/react-query";
 import { CharacterType } from "@/types/characters";

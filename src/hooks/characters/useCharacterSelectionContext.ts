@@ -1,5 +1,5 @@
-import { CharacterType } from "@/types/characters";
 import { createContext, useContext } from "react";
+import { CharacterType } from "@/types/characters";
 
 interface CharacterSelectionContextType {
   character1: CharacterType | null;

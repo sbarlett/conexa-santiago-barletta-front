@@ -1,63 +1,56 @@
+"use client";
 import { useState, useCallback } from "react";
-
 import { toast } from "sonner";
-import { Character } from "@/types/characters";
+import { CharacterType } from "@/types/characters";
 import { CharacterSelectionContext } from "@/hooks/characters/useCharacterSelectionContext";
 
 export function CharacterSelectionProvider({ children }: { children: React.ReactNode }) {
-  const [character1, setCharacter1] = useState<Character | null>(null);
-  const [character2, setCharacter2] = useState<Character | null>(null);
+  const [character1, setCharacter1] = useState<CharacterType | null>(null);
+  const [character2, setCharacter2] = useState<CharacterType | null>(null);
 
-  const selectCharacter1 = useCallback(
-    (character: Character) => {
-      if (character2 && character2.id === character.id) {
-        toast.error("Personaje ya seleccionado");
+  const selectCharacter = useCallback(
+    (character: CharacterType, position: 1 | 2) => {
+      const currentCharacter = position === 1 ? character2 : character1;
+      const updateCharacter = position === 1 ? setCharacter1 : setCharacter2;
+      if (currentCharacter?.id === character.id) {
+        toast.error("Ese personaje ya está elegido, prueba con otro");
         return;
       }
-
-      setCharacter1(character);
-      toast.success(`Personaje #1 seleccionado: ${character.name}`);
+      updateCharacter(character);
+      toast.success(`Personaje #${position} seleccionado: ${character.name}`);
     },
-    [character2]
+    [character1, character2]
   );
 
-  const selectCharacter2 = useCallback(
-    (character: Character) => {
-      if (character1 && character1.id === character.id) {
-        toast.error("Personaje ya seleccionado");
-        return;
+  const clearCharacter = useCallback(
+    (position: 1 | 2) => {
+      const currentCharacter = position === 1 ? character1 : character2;
+      const clearSelectedCharacter = position === 1 ? setCharacter1 : setCharacter2;
+      if (currentCharacter) {
+        clearSelectedCharacter(null);
+        toast.warning(`Personaje #${position} eliminado: ${currentCharacter.name}`);
       }
-      setCharacter2(character);
-      toast.success(`Personaje #2 seleccionado: ${character.name}`);
     },
-    [character1]
+    [character1, character2]
   );
-
-  const clearCharacter1 = useCallback(() => {
-    const characterName = character1?.name;
-    setCharacter1(null);
-    if (characterName) {
-      toast.success(`Personaje #1 removido: ${characterName}`);
-    }
-  }, [character1]);
-
-  const clearCharacter2 = useCallback(() => {
-    const characterName = character2?.name;
-    setCharacter2(null);
-    if (characterName) {
-      toast.success(`Personaje #2 removido: ${characterName}`);
-    }
-  }, [character2]);
 
   const clearAll = useCallback(() => {
-    const hasCharacters = character1 || character2;
-    setCharacter1(null);
-    setCharacter2(null);
-    if (hasCharacters) {
-      toast.success("Selección limpiada");
+    if (character1 || character2) {
+      setCharacter1(null);
+      setCharacter2(null);
+      toast.warning("Selección restablecida, elige nuevos personajes");
     }
   }, [character1, character2]);
 
-  const value = { character1, character2, selectCharacter1, selectCharacter2, clearCharacter1, clearCharacter2, clearAll };
+  const value = {
+    character1,
+    character2,
+    selectCharacter1: (char: CharacterType) => selectCharacter(char, 1),
+    selectCharacter2: (char: CharacterType) => selectCharacter(char, 2),
+    clearCharacter1: () => clearCharacter(1),
+    clearCharacter2: () => clearCharacter(2),
+    clearAll,
+  };
+
   return <CharacterSelectionContext.Provider value={value}>{children}</CharacterSelectionContext.Provider>;
 }
