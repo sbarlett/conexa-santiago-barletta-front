@@ -1,13 +1,13 @@
 # Challenge - Santiago Barletta - Desarrollador Frontend
 
 ## 🛠️ Tecnologías Utilizadas
-- **Next.js 15**
+- **Next.js**
 - **TypeScript** 
 - **Tailwind CSS** - Para el diseño
 - **Jest + Testing Library** - Testing unitario
 - **Axios** - Para manejar las peticiones HTTP
 - **React Query** - Para manejar la data, estados y paginacion infinita
-- **React Virtual** - Para mejorar el performance
+- **React Virtual** - Para mejorar el performance de los listados
 
 ## 🚀 Instalación y Uso
 
