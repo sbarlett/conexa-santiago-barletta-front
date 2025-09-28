@@ -1,6 +1,6 @@
 import axios, { AxiosError, AxiosInstance, AxiosResponse } from "axios";
 
-const API_URL = "https://rickandmortyapi.com/api";
+const API_URL = process.env.NEXT_PUBLIC_API_URL;
 
 const axiosInstance: AxiosInstance = axios.create({
   baseURL: `${API_URL}`,
