@@ -1,5 +1,5 @@
 import EpisodeList from "@/components/episodes/EpisodeList";
-import { useCharacterSelectionContext } from "@/hooks/characters/useCharacterSelectionContext";
+import { useCharacterSelectionContext } from "@/hooks/useCharacterSelectionContext";
 import { useEpisodeComparison } from "@/hooks/episodes/useEpisodeComparison";
 
 export default function EpisodeComparison() {

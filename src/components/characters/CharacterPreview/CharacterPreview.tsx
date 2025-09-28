@@ -1,5 +1,5 @@
 import CharacterSelector from "@/components/characters/CharacterPreview/CharacterSelector";
-import { useCharacterSelectionContext } from "@/hooks/characters/useCharacterSelectionContext";
+import { useCharacterSelectionContext } from "@/hooks/useCharacterSelectionContext";
 
 export default function CharacterPreview() {
   const { character1, character2, clearCharacter1, clearCharacter2, clearAll } = useCharacterSelectionContext();

@@ -1,5 +1,5 @@
 import CharacterList from "@/components/characters/CharacterList/CharacterList";
-import { useCharacterSelectionContext } from "@/hooks/characters/useCharacterSelectionContext";
+import { useCharacterSelectionContext } from "@/hooks/useCharacterSelectionContext";
 import { CharacterListEnum } from "@/types/characters";
 
 export default function CharactersGrid() {

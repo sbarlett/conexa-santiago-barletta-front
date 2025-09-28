@@ -2,7 +2,7 @@
 import { useState, useCallback } from "react";
 import { toast } from "sonner";
 import { CharacterType } from "@/types/characters";
-import { CharacterSelectionContext } from "@/hooks/characters/useCharacterSelectionContext";
+import { CharacterSelectionContext } from "@/hooks/useCharacterSelectionContext";
 
 export function CharacterSelectionProvider({ children }: { children: React.ReactNode }) {
   const [character1, setCharacter1] = useState<CharacterType | null>(null);

@@ -1,5 +1,5 @@
 import EpisodeStatsEmptyState from "@/components/episodes/EpisodeStats/EpisodeStatsEmptyState";
-import { useCharacterSelectionContext } from "@/hooks/characters/useCharacterSelectionContext";
+import { useCharacterSelectionContext } from "@/hooks/useCharacterSelectionContext";
 import { useEpisodeComparison } from "@/hooks/episodes/useEpisodeComparison";
 
 export default function EpisodeStats() {
