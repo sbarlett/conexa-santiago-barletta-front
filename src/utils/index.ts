@@ -16,9 +16,9 @@ export const getEstimatedRowHeight = (breakpoint: Breakpoint) => {
 export const getItemsPerRow = (breakpoint: Breakpoint) => {
   switch (breakpoint) {
     case Breakpoint.Mobile:
-      return 1;
-    case Breakpoint.Tablet:
       return 2;
+    case Breakpoint.Tablet:
+      return 3;
     case Breakpoint.Desktop:
     default:
       return 3;
@@ -28,9 +28,9 @@ export const getItemsPerRow = (breakpoint: Breakpoint) => {
 export const getGridColumnsClass = (breakpoint: Breakpoint) => {
   switch (breakpoint) {
     case Breakpoint.Mobile:
-      return "grid-cols-1";
-    case Breakpoint.Tablet:
       return "grid-cols-2";
+    case Breakpoint.Tablet:
+      return "grid-cols-3";
     case Breakpoint.Desktop:
     default:
       return "grid-cols-3";
