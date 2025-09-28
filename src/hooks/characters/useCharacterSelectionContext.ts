@@ -1,11 +1,11 @@
-import { Character } from "@/types/characters";
+import { CharacterType } from "@/types/characters";
 import { createContext, useContext } from "react";
 
 interface CharacterSelectionContextType {
-  character1: Character | null;
-  character2: Character | null;
-  selectCharacter1: (character: Character) => void;
-  selectCharacter2: (character: Character) => void;
+  character1: CharacterType | null;
+  character2: CharacterType | null;
+  selectCharacter1: (character: CharacterType) => void;
+  selectCharacter2: (character: CharacterType) => void;
   clearCharacter1: () => void;
   clearCharacter2: () => void;
   clearAll: () => void;
@@ -14,8 +14,8 @@ interface CharacterSelectionContextType {
 const initialValues = {
   character1: null,
   character2: null,
-  selectCharacter1: (_: Character) => {},
-  selectCharacter2: (_: Character) => {},
+  selectCharacter1: (_: CharacterType) => {},
+  selectCharacter2: (_: CharacterType) => {},
   clearCharacter1: () => {},
   clearCharacter2: () => {},
   clearAll: () => {},

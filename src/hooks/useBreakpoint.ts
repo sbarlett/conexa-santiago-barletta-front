@@ -6,19 +6,23 @@ const BREAKPOINTS = {
   tablet: 1024,
 };
 
-type Breakpoint = "mobile" | "tablet" | "desktop";
+export enum Breakpoint {
+  Mobile = "mobile",
+  Tablet = "tablet",
+  Desktop = "desktop",
+}
 
 export function useBreakpoint(): Breakpoint {
-  const [breakpoint, setBreakpoint] = useState<Breakpoint>("desktop");
+  const [breakpoint, setBreakpoint] = useState<Breakpoint>(Breakpoint.Desktop);
   useEffect(() => {
     const updateBreakpoint = () => {
       const width = window.innerWidth;
       if (width < BREAKPOINTS.mobile) {
-        setBreakpoint("mobile");
+        setBreakpoint(Breakpoint.Mobile);
       } else if (width < BREAKPOINTS.tablet) {
-        setBreakpoint("tablet");
+        setBreakpoint(Breakpoint.Tablet);
       } else {
-        setBreakpoint("desktop");
+        setBreakpoint(Breakpoint.Desktop);
       }
     };
     updateBreakpoint();

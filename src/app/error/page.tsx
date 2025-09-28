@@ -14,13 +14,13 @@ export default function ErrorPage() {
           <Image src="/error.png" alt="Error image" width={140} height={64} />
         </div>
         <h1 className="text-3xl font-bold text-foreground mb-4">Algo salio mal</h1>
-        <p className="text-muted-foreground mb-8 text-lg">Intente nuevamente más tarde.</p>
+        <p className="text-muted-foreground mb-8 text-lg">Revisa tu conexión a internet o intenta nuevamente más tarde.</p>
         <div className="space-y-4">
           <button
             onClick={handleGoHome}
-            className="w-full px-6 py-3 bg-transparent text-primary rounded-md hover:bg-primary/90 transition-colors font-medium border border-primary "
+            className="w-full px-6 py-3 bg-transparent text-primary rounded-md transition-colors font-medium border border-primary "
           >
-            Ir al inicio
+            Intentar de nuevo
           </button>
         </div>
       </div>

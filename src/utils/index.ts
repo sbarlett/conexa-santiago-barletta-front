@@ -1,14 +1,13 @@
+import { Breakpoint } from "@/hooks/useBreakpoint";
 import { StatusEnum } from "@/types/characters";
-
-type Breakpoint = "mobile" | "tablet" | "desktop";
 
 export const getEstimatedRowHeight = (breakpoint: Breakpoint) => {
   switch (breakpoint) {
-    case "mobile":
+    case Breakpoint.Mobile:
       return 240;
-    case "tablet":
+    case Breakpoint.Tablet:
       return 230;
-    case "desktop":
+    case Breakpoint.Desktop:
     default:
       return 220;
   }
@@ -16,11 +15,11 @@ export const getEstimatedRowHeight = (breakpoint: Breakpoint) => {
 
 export const getItemsPerRow = (breakpoint: Breakpoint) => {
   switch (breakpoint) {
-    case "mobile":
+    case Breakpoint.Mobile:
       return 1;
-    case "tablet":
+    case Breakpoint.Tablet:
       return 2;
-    case "desktop":
+    case Breakpoint.Desktop:
     default:
       return 3;
   }
@@ -28,11 +27,11 @@ export const getItemsPerRow = (breakpoint: Breakpoint) => {
 
 export const getGridColumnsClass = (breakpoint: Breakpoint) => {
   switch (breakpoint) {
-    case "mobile":
+    case Breakpoint.Mobile:
       return "grid-cols-1";
-    case "tablet":
+    case Breakpoint.Tablet:
       return "grid-cols-2";
-    case "desktop":
+    case Breakpoint.Desktop:
     default:
       return "grid-cols-3";
   }
@@ -44,9 +43,7 @@ export const statusColorMap: Record<StatusEnum, string> = {
   [StatusEnum.Unknown]: "bg-gray-500",
 };
 
-
 export const extractEpisodeId = (url: string): number => {
   const parts = url.split("/");
   return Number.parseInt(parts[parts.length - 1]);
 };
-

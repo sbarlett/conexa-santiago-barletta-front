@@ -10,15 +10,20 @@ const axiosInstance: AxiosInstance = axios.create({
   },
 });
 
-const ERROR_CODES_TO_SEARCH = [404];
+export const isErrorNotFound = (error: AxiosError) => {
+  return axios.isAxiosError(error) && error.response?.status === 404;
+};
+
+const isServerError = (error: AxiosError) => {
+  return axios.isAxiosError(error) && error.response?.status === 500;
+};
 
 axiosInstance.interceptors.response.use(
   (response: AxiosResponse) => {
     return Promise.resolve(response);
   },
   (error: AxiosError) => {
-    const status = error.response?.status as number;
-    if (!ERROR_CODES_TO_SEARCH.includes(status)) {
+    if (isServerError(error)) {
       window.location.href = "/error";
     }
     return Promise.reject(error);

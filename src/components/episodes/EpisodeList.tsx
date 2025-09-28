@@ -1,10 +1,10 @@
 import Image from "next/image";
 import EpisodeCard from "@/components/episodes/EpisodeCard";
-import { Episode } from "@/types/episodes";
+import { EpisodeType } from "@/types/episodes";
 
 
 interface EpisodeListProps {
-  episodes: Episode[];
+  episodes: EpisodeType[];
   title: string;
   emptyMessage: string;
   isLoading: boolean;

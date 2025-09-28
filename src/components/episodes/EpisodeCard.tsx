@@ -1,7 +1,7 @@
-import { Episode } from "@/types/episodes";
+import { EpisodeType } from "@/types/episodes";
 
 
-export default function EpisodeCard({ episode }: { episode: Episode }) {
+export default function EpisodeCard({ episode }: { episode: EpisodeType }) {
   return (
     <div className="p-3 border border-border bg-card rounded-lg hover:bg-accent transition-colors">
       <div className="flex justify-between items-start mb-2">
