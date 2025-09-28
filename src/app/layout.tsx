@@ -5,9 +5,9 @@ import Logo from "@/components/ui/Logo";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Conexa - Santiago Barletta",
+  title: "Challenge - Santiago Barletta",
   icons: {
-    icon: "/conexa.png",
+    icon: "/favicon.png",
   },
 };
 
