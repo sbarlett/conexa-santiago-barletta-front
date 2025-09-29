@@ -23,10 +23,13 @@ axiosInstance.interceptors.response.use(
     return Promise.resolve(response);
   },
   (error: AxiosError) => {
-    if (isServerError(error)) {
-      window.location.href = "/error";
+    if (isNotFoundError(error)) {
+      return Promise.reject(error);
     }
-    return Promise.reject(error);
+
+    if (isServerError(error)) {
+      throw new Error("Internal Server Error");
+    }
   }
 );
 

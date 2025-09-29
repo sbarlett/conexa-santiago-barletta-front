@@ -26,5 +26,6 @@ export const useCharactersInfiniteScroll = (queryKey: string, search: string) =>
       return nextUrl ? parseInt(new URL(nextUrl).searchParams.get("page") || "1") : undefined;
     },
     staleTime: 5 * 60 * 1000,
+    throwOnError: true,
   });
 };

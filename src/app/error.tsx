@@ -1,12 +1,9 @@
 "use client";
 import Image from "next/image";
-import { useRouter } from "next/navigation";
+import { useEffect } from "react";
 
-export default function ErrorPage() {
-  const router = useRouter();
-  const handleGoHome = () => {
-    router.push("/");
-  };
+export default function Error({ error, reset }: { error: Error; reset: () => void }) {
+  useEffect(() => console.error(error), [error]);
   return (
     <div className="flex items-center justify-center bg-background p-8">
       <div className="max-w-md w-full text-center">
@@ -17,7 +14,7 @@ export default function ErrorPage() {
         <p className="text-muted-foreground mb-8 text-lg">Revisa tu conexión a internet o intenta nuevamente más tarde.</p>
         <div className="space-y-4">
           <button
-            onClick={handleGoHome}
+            onClick={() => reset()}
             className="w-full px-6 py-3 bg-transparent text-primary rounded-md transition-colors font-medium border border-primary "
           >
             Intentar de nuevo

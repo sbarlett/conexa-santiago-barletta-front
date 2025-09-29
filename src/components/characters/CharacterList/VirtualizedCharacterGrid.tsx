@@ -1,9 +1,8 @@
-import { useCallback, useEffect, useMemo, useRef } from "react";
+import { useEffect, useMemo, useRef } from "react";
 import { useVirtualizer } from "@tanstack/react-virtual";
 import CharacterCard from "@/components/characters/CharacterCard";
 import EmptyCard from "@/components/ui/EmptyCard";
-import { useBreakpoint } from "@/hooks/useBreakpoint";
-import { getEstimatedRowHeight, getGridColumnsClass, getItemsPerRow } from "@/utils";
+import { Breakpoint, useBreakpoint } from "@/hooks/useBreakpoint";
 import { CharacterType } from "@/types/characters";
 
 interface VirtualizedCharacterGridProps {
@@ -31,9 +30,9 @@ export default function VirtualizedCharacterGrid({
 
   const { itemsPerRow, gridColumnsClass, totalRows } = useMemo(
     () => ({
-      itemsPerRow: getItemsPerRow(breakpoint),
-      gridColumnsClass: getGridColumnsClass(breakpoint),
-      totalRows: Math.ceil(characters.length / getItemsPerRow(breakpoint)),
+      itemsPerRow: breakpoint === Breakpoint.Mobile ? 2 : 3,
+      gridColumnsClass: breakpoint === Breakpoint.Mobile ? "grid-cols-2" : "grid-cols-3",
+      totalRows: Math.ceil(characters.length / (breakpoint === Breakpoint.Mobile ? 2 : 3)),
     }),
     [breakpoint, characters.length]
   );
@@ -44,7 +43,7 @@ export default function VirtualizedCharacterGrid({
   const rowVirtualizer = useVirtualizer({
     count: rowCount,
     getScrollElement: () => parentRef.current,
-    estimateSize: useCallback(() => getEstimatedRowHeight(breakpoint), [breakpoint]),
+    estimateSize: () => 230,
     overscan: 2,
   });
 

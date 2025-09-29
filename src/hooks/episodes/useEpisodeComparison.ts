@@ -2,7 +2,8 @@ import { useMemo } from "react";
 import { useQueries } from "@tanstack/react-query";
 import { CharacterType } from "@/types/characters";
 import { getEpisodes } from "@/services/api";
-import { extractEpisodeId } from "@/utils";
+
+export const extractEpisodeId = (url: string) => +url.split("/").pop()!;
 
 export const useEpisodeComparison = (character1: CharacterType | null, character2: CharacterType | null) => {
   const episodeQueries = useQueries({
