@@ -6,12 +6,14 @@ import "./globals.css";
 
 export const metadata: Metadata = {
   title: "Challenge - Santiago Barletta",
+  description: "Rick and Morty App - Challenge",
+  keywords: ["Rick and Morty", "Challenge", "NextJS", "Conexa", "Santiago Barletta"],
   icons: {
     icon: "/favicon.png",
   },
 };
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default async function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="es" className="dark bg-background">
       <body className="text-foreground">
