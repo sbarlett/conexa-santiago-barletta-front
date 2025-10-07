@@ -1,4 +1,3 @@
-"use client";
 import CharacterPreview from "@/components/characters/CharacterPreview/CharacterPreview";
 import CharactersGrid from "@/components/characters/CharactersGrid";
 import EpisodeComparison from "@/components/episodes/EpisodeComparison";

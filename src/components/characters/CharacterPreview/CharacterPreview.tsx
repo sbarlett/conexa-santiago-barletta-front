@@ -1,3 +1,4 @@
+'use client'
 import CharacterSelector from "@/components/characters/CharacterPreview/CharacterSelector";
 import { useCharacterSelectionContext } from "@/hooks/useCharacterSelectionContext";
 

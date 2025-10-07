@@ -1,3 +1,4 @@
+'use client'
 import EpisodeList from "@/components/episodes/EpisodeList";
 import { useCharacterSelectionContext } from "@/hooks/useCharacterSelectionContext";
 import { useEpisodeComparison } from "@/hooks/episodes/useEpisodeComparison";

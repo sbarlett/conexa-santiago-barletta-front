@@ -1,3 +1,4 @@
+"use client"
 import CharacterList from "@/components/characters/CharacterList/CharacterList";
 import { useCharacterSelectionContext } from "@/hooks/useCharacterSelectionContext";
 import { CharacterListEnum } from "@/types/characters";
