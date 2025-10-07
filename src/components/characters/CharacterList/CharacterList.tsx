@@ -15,7 +15,7 @@ export default function CharacterList({ selectedCharacter, onCharacterSelect, li
   const [search, setSearch] = useState("");
   const debouncedSearch = useDebounce(search, 500);
 
-  const { data, fetchNextPage, hasNextPage, isFetchingNextPage, isLoading } = useCharactersInfiniteScroll(listKey, debouncedSearch);
+  const { data, fetchNextPage, hasNextPage, isFetchingNextPage, isLoading } = useCharactersInfiniteScroll(debouncedSearch);
 
   const characters = useMemo(() => data?.pages.flatMap((page) => page.results) ?? [], [data]);
 

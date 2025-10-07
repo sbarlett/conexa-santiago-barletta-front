@@ -1,7 +1,7 @@
 import { useMemo } from "react";
 import { useQueries } from "@tanstack/react-query";
 import { CharacterType } from "@/types/characters";
-import { getEpisodes } from "@/services/api";
+import { getEpisodes } from "@/services";
 
 export const extractEpisodeId = (url: string) => +url.split("/").pop()!;
 
@@ -12,11 +12,15 @@ export const useEpisodeComparison = (character1: CharacterType | null, character
         queryKey: ["episodes", "character1", character1?.id],
         queryFn: () => getEpisodes(character1?.episode.map(extractEpisodeId) || []),
         enabled: !!character1?.episode.length,
+        staleTime: 60 * 60 * 1000,
+        gcTime: 24 * 60 * 60 * 1000,
       },
       {
         queryKey: ["episodes", "character2", character2?.id],
         queryFn: () => getEpisodes(character2?.episode.map(extractEpisodeId) || []),
         enabled: !!character2?.episode.length,
+        staleTime: 60 * 60 * 1000,
+        gcTime: 24 * 60 * 60 * 1000,
       },
     ],
   });

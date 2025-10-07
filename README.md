@@ -5,7 +5,6 @@
 - **TypeScript** 
 - **Tailwind CSS** - Para el diseño
 - **Jest + Testing Library** - Testing unitario
-- **Axios** - Para manejar las peticiones HTTP
 - **React Query** - Para manejar la data, estados y paginacion infinita
 - **React Virtual** - Para mejorar el performance de los listados
 
